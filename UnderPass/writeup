@@ -1,0 +1,7 @@
+on lance nmap (udp) et on trouve le port 161
+on enum soit avec msf soit avec un check et on trouve dolaradius
+on se connecte avec un truc default (administrator:radius)
+on trouve un username et un mdp hashé qu'on decrypte avec crackstation
+
+pour la priv escalation il suffit de soit lancer linenum ou linpeas, n trouve qu'on peut exec mosh-server en sudo
+on fait man mosh pour voir le truc et on remarque l'option --server qui est interessante
