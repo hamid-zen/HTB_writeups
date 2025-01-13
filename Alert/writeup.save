@@ -1,0 +1,14 @@
+on commence classique avec nmap en sS et sU
+ports ssh:22, apache:80, dhcpc: 68
+
+there's a php script: visualizer.php
+avec gobuster je trouve un dossier uploads et messages (access forbidden)
+
+XSS injection possible
+on met un payload avec un fetch vers notre machine pour recupe .htpasswd
+
+on se retrouve avec: %3Cpre%3Ealbert%3A%24apr1%24bMoRBJOg%24igG8WBtQ1xYDTQdLjSWZQ%2F%0A%3C%2Fpre%3E%0A
+on le decrypte <pre>albert:$apr1$bMoRBJOg$igG8WBtQ1xYDTQdLjSWZQ/</pre>
+
+on le donne a john et on trouve albert:manchesterunited
+on essaie dans ssh
