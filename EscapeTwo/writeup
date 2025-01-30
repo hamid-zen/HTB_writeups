@@ -1,0 +1,18 @@
+on trouve quelques shares smb avec les cred qu'on nous a donné 
+
+on trouve une share interessante: Accounting Departement
+
+on y trouve deux fichier excels. dans le fichier account.xlsx on trouve une 
+liste d'utilisateur avec leurs mdp (qu'on peut conf en enumerant les users 
+avec --users)
+
+le plus interessant est sa: (on voit grace a 
+admin/mssql/mssql_enum_sql_logins que c'est un sysadmin)
+
+on se connecte au MSSQL avec impacket et on lance xp_cmdshell pour avoir 
+un reverse shell
+
+on fouille un peu et on trouve un fichier de configuration SQL avec un 
+mdp, on essaye de se connecter au user ryan avec et on trouve le user.txt 
+
+
