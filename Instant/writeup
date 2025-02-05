@@ -1,0 +1,22 @@
+on trouve 2 ports ssh et http
+
+rien de special en terme de fichier et subdomains.
+
+on trouve quand meme un apk dan sla page d'acceuil qui peut contenir des infos hardcodées. on le decompile avec jadx
+dans le fichier res/xml/network_security_config.xml on trouve deux domains: mywalletv1.instant.htb, swagger-ui.instant.htb
+dans le fichier com.instantlabs.instant.AdminActivities on trouve un token admin: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwid2FsSWQiOiJmMGVjYTZlNS03ODNhLTQ3MWQtOWQ4Zi0wMTYyY2JjOTAwZGIiLCJleHAiOjMzMjU5MzAzNjU2fQ.v0qyyAqDSgyoNFHU7MgRQcDA0Bw99_8AEXKGtWZ6rYA
+
+on trouve une doc api dans le domain swagger-ui
+on trouve ainsi un nouveau username en utilisant l'endpoint: /api/v1/admin/list/users
+    {
+      "email": "shirohige@instant.htb",
+      "role": "instantian",
+      "secret_pin": 42845,
+      "status": "active",
+      "username": "shirohige",
+      "wallet_id": "458715c9-b15e-467b-8a3d-97bc3fcf3c11"
+    },
+on remarque aussi qu'on peut traverser les dossier avec l'endpoint: /api/v1/admin/read/log donc on check si on peut trouver un truc interessant.
+
+on trouve la clé privée du user. on la nettoie et on le formatte en fichier id_rsa
+on se connecte et on trouve le token
